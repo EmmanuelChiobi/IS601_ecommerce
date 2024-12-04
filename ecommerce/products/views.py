@@ -4,7 +4,6 @@ from .models import Product
 from .models import Customer
 from django.views.decorators.csrf import csrf_protect
 
-
 @csrf_protect
 def home(request):
   """
@@ -57,7 +56,7 @@ def search(request):
   product = Product.objects.filter(Name__icontains=key)
   return render(request, 'product.html', context={'product' : product})
 
-def cart(request, user="U1"):
+def cart(request, user="kris"):
   user = Customer.objects.filter(userName=user)
   products = user[0].cart.all()
   return render(request, 'cart.html', context = {"products": products })

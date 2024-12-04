@@ -12,7 +12,7 @@
               Sort Products
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right:15px">
-                <form method="POST" action="/products">
+                <form method="POST" action="./">
                     {% csrf_token %}
                     <input type="hidden" id="sort" name="sort">
                     <button class="dropdown-item" onclick="document.getElementById('sort').value = 'ASC'" type="submit">Price Low to High</button>
@@ -25,7 +25,7 @@
                 {% for x in products %}
                     <div class="col-sm-6" style="margin-bottom:10px">
                         <div class="card shadow-sm">
-                            <a href="products/product/{{x.PID}}">
+                            <a href="product/{{x.PID}}">
                                 <img src="{% static x.Image %}" style="width:550px; height:350px" class="img-thumbnail"/>
                                 <div class="card-body" >
                                     <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Name}}</font></font></p>
