@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content%}
+{% include "navbar.html" %} 
+<html>
+    <body>
+    <div class="container">
+            {% for x in product %}
+                    <div class="card shadow-sm">
+                        <img src="{% static x.Image %}" class="img-thumbnail"/>
+                        <div class="card-body" >
+                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Name}}</font></font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Price}}</font></font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Model}}</font></font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Category}}</font></font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{x.Specifications | linebreaksbr}}</font></font></p>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    </body>
+</html>
+{% endblock %}
