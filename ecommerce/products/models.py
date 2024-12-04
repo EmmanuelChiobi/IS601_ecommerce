@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Product(models.Model):
-    ID = models.IntegerField()
     Name = models.CharField(max_length=200)
+    PID = models.IntegerField()
     Image = models.CharField(max_length=200)
     Model = models.CharField(max_length=200)
     Category = models.CharField(max_length=200)
@@ -12,7 +12,7 @@ class Product(models.Model):
     StockAmount = models.IntegerField()
     
     
-class User(models.Model):
+class Customer(models.Model):
     userName = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
-    cart = [Product()]
+    cart = models.ManyToManyField(Product)
