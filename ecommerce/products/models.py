@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Model for products in the catalog
 class Product(models.Model):
     Name = models.CharField(max_length=200)
     PID = models.IntegerField()
@@ -11,8 +11,9 @@ class Product(models.Model):
     Price = models.FloatField()
     StockAmount = models.IntegerField()
     
-    
+# Model for users
 class Customer(models.Model):
     userName = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     cart = models.ManyToManyField(Product)
+    
