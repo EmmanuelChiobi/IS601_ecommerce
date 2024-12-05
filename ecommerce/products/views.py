@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from .models import Product
 from .models import Customer
+from cart.models import CartItem
 from django.views.decorators.csrf import csrf_protect
 
 @csrf_protect
@@ -23,8 +24,11 @@ def home(request):
       products = Product.objects.all().order_by('-Price')
   else:
     products = Product.objects.all()  
+    
+  user = Customer.objects.filter(userName="kris")
+  cart = CartItem.objects.filter(user_id = user[0].id)
   
-  return render(request, 'products.html', context={'products' : products})
+  return render(request, 'products.html', context={'products' : products, 'cart': cart})
 
 def product(request, pid):
   """
@@ -55,9 +59,4 @@ def search(request):
   key = request.POST["key"]
   product = Product.objects.filter(Name__icontains=key)
   return render(request, 'product.html', context={'product' : product})
-
-def cart(request, user="kris"):
-  user = Customer.objects.filter(userName=user)
-  products = user[0].cart.all()
-  return render(request, 'cart.html', context = {"products": products })
   

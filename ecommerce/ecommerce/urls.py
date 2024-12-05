@@ -21,5 +21,6 @@ import ecommerce.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('products/', include('products.urls'))
+    path('products/', include('products.urls')),
+    path('cart/', include('cart.urls'))
 ]
