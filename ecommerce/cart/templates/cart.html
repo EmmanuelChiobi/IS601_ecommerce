@@ -14,7 +14,9 @@
                         <img src="{% static x.product.Image %}" style="width:110px; height:70px; display:inline" class="img-thumbnail"/>
                         &nbsp;&nbsp;&nbsp;<p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.product.Name}} ${{x.product.Price}}</font></font></p>
                     </a>
-                    <a class="btn btn-primary" href="#" style="float:right">Hi</a>
+                    <a href="/cart/delete/{{x.product.id}}" class="btn btn-primary" style="width:33%">-</a>
+                    <button class="btn btn-success"style="width:34%">{{x.quantity}}</button>
+                    <a href="/cart/add/{{x.product.id}}" class="btn btn-primary"style="width:33%">+</a>
                 </div>
                 {% endfor %}
 
@@ -22,10 +24,8 @@
                 <script>document.querySelector('.container').setAttribute(
                         "style","display: flex;justify-content: center;align-items: center;height: 100vh;text-align: center;"
                     )</script>
-                <h1>Your cart is empty, add something ya dog!</h1>
+                <h1>Your cart is empty, add something now!</h1>
             {% endif %}
-
-            
         </div>
     </body>
     </html>

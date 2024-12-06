@@ -12,6 +12,7 @@ def cart(request, user="kris"):
     return render(request, 'cart.html', context = {"products": userCart })
 
 def cart_add(request, id, user="kris"):
+    referer = request.META.get('HTTP_REFERER', 'unknown').split('/')[-2]
     user = Customer.objects.filter(userName=user)
     product = Product.objects.filter(id = id)
     userCart = CartItem.objects.filter(user_id=user[0].id) 
@@ -23,10 +24,13 @@ def cart_add(request, id, user="kris"):
             CartItem.objects.create(user=user[0], quantity=1, product=product[0]).save()
         else:
             userCart.filter(product_id=product[0].id).update(quantity=F('quantity')+1)
-            
-    return redirect('/products')
+    if referer == 'products':
+        return redirect('/products')
+    elif referer == 'cart':
+        return redirect('/cart')
 
 def cart_delete(request, id, user="kris"):
+    referer = request.META.get('HTTP_REFERER', 'unknown').split('/')[-2]
     user = Customer.objects.filter(userName=user)
     product = Product.objects.filter(id = id)
     userCart = CartItem.objects.filter(user_id=user[0].id)
@@ -36,6 +40,7 @@ def cart_delete(request, id, user="kris"):
     else:
         CartItem.objects.filter(user_id = user[0].id).filter(product_id=product[0].id).update(quantity=F('quantity')-1)
         
-        
-            
-    return redirect('/products')
+    if referer == 'products':
+        return redirect('/products')
+    elif referer == 'cart':
+        return redirect('/cart')
