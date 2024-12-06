@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+{% include "navbar.html" %} 
+<html>
+    <body>
+        <br>
+        
+        <div class="dropdown" style="float:right; margin-right:10px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort Products
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-right:15px">
+                <form method="POST" action="./">
+                    {% csrf_token %}
+                    <input type="hidden" id="sort" name="sort">
+                    <button class="dropdown-item" onclick="document.getElementById('sort').value = 'ASC'" type="submit">Price Low to High</button>
+                    <button class="dropdown-item" onclick="document.getElementById('sort').value = 'DESC'" type="submit">Price High to Low</button>
+                </form>
+            </div>
+          </div>
+        <div class="container">
+            <div class="row">
+                {% for x in products %}
+                    <div class="col-sm-6" style="margin-bottom:10px">
+                        <div class="card shadow-sm">
+                            <a href="product/{{x.PID}}">
+                                <img src="{% static x.Image %}" style="width:550px; height:350px" class="img-thumbnail"/>
+                                <div class="card-body" >
+                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Name}}</font></font></p>
+                                    <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${{x.Price}}</font></font></p>
+                                </div>
+                            </a>
+                            <form method="GET" action="/cart/add/{{x.id}}">
+                                <input class="btn btn-primary" id="cart_{{x.id}}" style="width:100%;" type="submit" value="Add to cart">
+                            </form>
+                            {% for y in cart %}
+                                {% if y.product.Name == x.Name %}
+                                <script>document.getElementById("cart_"+{{x.id}}).style.display="none"</script>
+                                <div style="display:flex">
+                                    <a href="/cart/delete/{{x.id}}" class="btn btn-primary" style="width:33%">-</a>
+                                    <button class="btn btn-success"style="width:34%">{{y.quantity}}</button>
+                                    <a href="/cart/add/{{x.id}}" class="btn btn-primary"style="width:33%">+</a>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}
