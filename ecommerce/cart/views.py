@@ -4,12 +4,13 @@ from products.models import Product
 from products.models import Customer
 from .models import CartItem
 from django.views.decorators.csrf import csrf_protect
-from django.db.models import F
+from django.db.models import F, Sum
 
 def cart(request, user="kris"):
     user = Customer.objects.filter(userName=user)
     userCart = CartItem.objects.filter(user_id=user[0].id)
-    return render(request, 'cart.html', context = {"products": userCart })
+    total_price = userCart.aggregate(total=Sum(F('product__Price') * F('quantity')))['total']
+    return render(request, 'cart.html', context = {"products": userCart, 'total_price': total_price })
 
 def cart_add(request, id, user="kris"):
     referer = request.META.get('HTTP_REFERER', 'unknown').split('/')[-2]

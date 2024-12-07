@@ -10,11 +10,15 @@
         <li class="nav-item active">
           <a class="nav-link" href="/products">Home <span class="sr-only">(current)</span></a>
         </li>
-      <form class="form-inline my-2 my-lg-0" method="POST" action="/products/search">
-        {% csrf_token %}
-        <input class="form-control mr-sm-2" name="key" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <a class="btn btn-primary" href="/cart" style="float:right; margin-right:20px">Cart {{ item_count }}</a>
+        <li>
+          <form class="form-inline my-2 my-lg-0" method="POST" action="/products/search">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" name="key" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </li>
+        <li>
+          <a class="btn btn-primary" href="/cart" style="float:right; margin-right:20px">Cart {{ item_count }}</a>
+        </li>
     </div>
   </nav>
