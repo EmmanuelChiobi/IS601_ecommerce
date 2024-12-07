@@ -19,6 +19,7 @@
                     <a href="/cart/add/{{x.product.id}}" class="btn btn-primary"style="width:33%">+</a>
                 </div>
                 {% endfor %}
+                <h1> Cart Total: {{ total_price }}</h1>
 
             {% else %}
                 <script>document.querySelector('.container').setAttribute(
