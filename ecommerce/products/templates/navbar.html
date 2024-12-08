@@ -8,7 +8,7 @@
         <li id="search-bar"><form class="form-inline my-2 my-lg-0" method="POST" action="/products/search">
           {% csrf_token %}
           <input class="form-control-lg" name="key" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-dark btn-lg" type="submit">Search</button>
+          <button type="submit" class="search-btn"><img src="{% static 'css-imgs/search-icon.png' %}" class="search-icon"></button>
         </form></li>
         <li><a class="nav-link" href="/products"><h6>Home</h6><span class="sr-only">(current)</span></a></li>
         <li><a href="#">LOGOUT</a></li>
