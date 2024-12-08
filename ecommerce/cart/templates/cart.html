@@ -7,19 +7,22 @@
     <body>
         <br>
         <div class="container-fluid" id="cart-container">
+            <h1><u><b><i>Cart Items</i></b></u></h1>
             {% if products.count != 0 %}
                 {% for x in products %}
                 <div class="cart-cards">
-                    <a href="products/product/{{x.product.PID}}" style="display:flex" id="cart-item">
+                    <a href="products/product/{{x.product.PID}}" id="cart-item">
                         <img src="{% static x.product.Image %}" id="cart-item-img"/>
-                        &nbsp;&nbsp;&nbsp;<p class="card-text"><font style="vertical-align: inherit;">{{x.product.Name}} ${{x.product.Price}}</font></p>
                     </a>
-                    <a href="/cart/delete/{{x.product.id}}" class="btn btn-primary">-</a>
-                    <button class="btn btn-success">{{x.quantity}}</button>
-                    <a href="/cart/add/{{x.product.id}}" class="btn btn-primary">+</a>
+                            <a href="/cart/delete/{{x.product.id}}" class="btn btn-danger" id="cart-minus">-</a>
+                            <button class="btn btn-light" id="cart-quantity">{{x.quantity}}</button>
+                            <a href="/cart/add/{{x.product.id}}" class="btn btn-success" id="cart-plus">+</a>
+                        <p class="card-text" id="cart-card-text"><font style="vertical-align: inherit;"><b>{{x.product.Name}}</b><br> per unit: ${{x.product.Price}}</font></p>
+                    
+                    
                 </div>
                 {% endfor %}
-                <h1> Cart Total: {{ total_price }}</h1>
+                <h1 id="cart-total"> Cart Total: ${{ total_price }}</h1>
 
             {% else %}
                 <script>document.querySelector('.container').setAttribute(
