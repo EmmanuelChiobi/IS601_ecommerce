@@ -4,7 +4,7 @@ from django.contrib import messages
 
 # Create your views here.
 def login_user(request):
-    return render(request, 'templates/auth/login.html', {})
+    return render(request, 'auth/login.html', {})
 
 def register_user(request):
-    return render(request, 'templates/auth/register.html', {})
+    return render(request, 'auth/register.html', {})

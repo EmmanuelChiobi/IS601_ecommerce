@@ -23,6 +23,6 @@ urlpatterns = [
     path('', views.index),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
-    path('login/', include('django.contrib.auth.urls')),
+    # path('login/', include('django.contrib.auth.urls')),
     path('login/', include('authapp.urls')),
 ]
