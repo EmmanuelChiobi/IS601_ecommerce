@@ -36,7 +36,9 @@
                                 </div>
                             </a>
                             <form method="GET" action="/cart/add/{{x.id}}">
-                                <input class="btn btn-info" id="cart_{{x.id}}" style="width:100%;" type="submit" value="Add to cart">
+                                <div class="add-to-cart" >
+                                    <input id="cart_{{x.id}}" type="submit" value="Add to cart" style="background-color: rgb(194, 216, 242); margin-bottom: 17px; padding: 15px; border-radius: 20px;">
+                                </div>
                             </form>
                             {% for y in cart %}
                                 {% if y.product.Name == x.Name %}
@@ -46,6 +48,8 @@
                                     <button class="btn btn-light" id="current" >{{y.quantity}}</button>
                                     <a href="/cart/add/{{x.id}}" class="btn btn-success" id="plus">+</a>
                                 </div>
+                                {% else %}
+                                
                                 {% endif %}
                             {% endfor %}
                         </div>

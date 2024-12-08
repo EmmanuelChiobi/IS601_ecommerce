@@ -37,6 +37,53 @@ body{
   border: solid 2px black;
 }
 
+#specific-product{
+  align-items: center;
+  width: 90%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: 5%;
+  background-color: rgba(249, 246, 246, 0.788);
+  color: #fff;
+  border-radius: 50px;
+  
+}
+
+.add-to-cart{
+	background-color: whitesmoke; 
+  text-align: center; 
+  border-bottom-left-radius: 15px; 
+  border-bottom-right-radius: 15px;
+}
+
+
+#specific-card-body{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+.cart-cards{
+  background-color: red;
+  margin-bottom:10px;
+  padding:10px;
+  display: flex;
+}
+
+#cart-container{
+
+  padding: 20px;
+
+}
+
+#cart-item-img{
+  margin-right:10%;
+  height:120px;
+  width: 150px;
+   
+}
+
 .card-shadow-sm{
   border: solid 5px black;
   border-radius: 20px;
@@ -77,7 +124,9 @@ body{
 
 .card-body{
   background-color: whitesmoke;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: solid 5px black
 }
 
 .card-text{
