@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.shortcuts import redirect
 from django.contrib import admin
 from django.urls import path, include
 from ecommerce import views as e_v
@@ -26,6 +27,7 @@ urlpatterns = [
     path('authapp/', include('django.contrib.auth.urls')),
     path('authapp/', include('authapp.urls')),
     # path('login/', include('django.contrib.auth.urls')),
-    path('', include('authapp.urls')),
-    path('thankyou/', e_v.thankyou)
+    # path('', include('products.urls')),
+    path('', lambda request: redirect('products/')),
+    path('thankyou/', e_v.thankyou),
 ]
