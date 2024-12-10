@@ -3,7 +3,7 @@ Semester project (E-commerce site) for the IS 601-101 course
 
 Procedure to execute project:-
 
-- Download the project files into a folder
+- Download the project files
 - Copy all files into an empty folder if necessary
 -  Open CMD and navigate to Assignment4/assignment folder
 -  Run command 'python manage.py runserver'
