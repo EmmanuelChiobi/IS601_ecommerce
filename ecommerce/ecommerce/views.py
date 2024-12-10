@@ -1,15 +1,15 @@
 from django.shortcuts import redirect, render
 from products.models import Product
 from cart.models import CartItem
-from authapp.models import User
 from django.db.models import F, Sum
+from django.contrib.auth import get_user
 
 def index(request):
   return redirect('/products')
 
 def thankyou(request):
   if request.method == 'POST':
-    cart = CartItem.objects.filter(user__userName = 'kris')
+    cart = CartItem.objects.filter(user = get_user(request).username)
     print(cart)
     if cart:
       total_price = cart.aggregate(total=Sum(F('product__Price') * F('quantity')))['total']
