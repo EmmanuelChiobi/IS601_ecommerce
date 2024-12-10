@@ -18,32 +18,8 @@ from .serializers import UserSerializer, CustomTokenPairSerializer
 from .forms import UserRegistrationForm
 
 # Create your views here.
-"""
-class LoginView(TokenObtainPairView):
-    serializer_class = CustomTokenPairSerializer
 
-class RegisterView(APIView):
-    permission_classes = [AllowAny]
-    
-    def post(self, request, *args, **kwargs):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({"message": "User registered succesfully."}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-class CreateUserView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [AllowAny]
-
-class ProtectedView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        return Response({"message": "You are authenticated!"})
-
-"""
-
+products_dir = '../products'
 
 def login_user(request):
     if request.method == "POST":
@@ -52,7 +28,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('../products/')
+            return redirect(products_dir)
         else:
             messages.success(request, ("There was an error logging in. Try again"))
             return redirect('login')
@@ -62,27 +38,20 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, ("You have successfully logged out."))
-    return redirect('../products')
+    return redirect(products_dir)
 
 def register_user(request):
-    return render(request, 'authenticate/register.html', {})
-
-"""
-def register_user(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}! You can now log in.')
-            return redirect('login')
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password1"]
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect(products_dir)
     else:
-        form = UserRegistrationForm()
+        form = UserCreationForm()
+    return render(request, 'authenticate/register.html', {'form': form})
 
-    return render(request, 'auth/register.html', {'form': form})
-
-@login_required
-def shop_redirect(request):
-    return render(request, 'products.html')
-
-"""
+# Gbuwce!26564

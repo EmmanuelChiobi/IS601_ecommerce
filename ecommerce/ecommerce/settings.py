@@ -93,7 +93,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
-LOGIN_REDIRECT_URL = 'ecommerce/home'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'authapp/login_user/'
 LOGOUT_REDIRECT_URL = 'authapp/login_user/'
 
