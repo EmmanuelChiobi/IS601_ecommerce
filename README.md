@@ -1,6 +1,8 @@
-# IS601_ecommerce
-## Semester project (E-commerce site) for the IS 601-101 course
-
+# Group 3: What-A-Deal!
+### Group Members:
+- ### Emmanuel Chiobi
+- ### Allen Chacko Johny
+- ### Venkata Krishna Sastry Sreeramakavacham
 ### Procedure to execute project:-
 
 - Download the project files by clicking on the Code button and "Download ZIP"
