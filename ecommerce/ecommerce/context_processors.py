@@ -7,3 +7,7 @@ def cart_total(request):
     if item_count == None:
         item_count = 0
     return {"item_count": item_count}
+
+def cur_user(request):
+    print(get_user(request).username)
+    return {"user" : get_user(request).username}

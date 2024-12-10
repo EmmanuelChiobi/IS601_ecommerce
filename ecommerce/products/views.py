@@ -20,8 +20,10 @@ def home(request):
     sort = request.POST.get("sort")
     if sort == "ASC":
       products = Product.objects.all().order_by('Price')
-    else:
+    elif sort == "DESC":
       products = Product.objects.all().order_by('-Price')
+    else:
+      products = Product.objects.all().order_by('-Rating')
   else:
     products = Product.objects.all()  
     
