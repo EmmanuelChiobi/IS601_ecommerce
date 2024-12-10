@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from .models import Product
-from .models import Customer
 from cart.models import CartItem
+from django.contrib.auth import get_user
 from django.views.decorators.csrf import csrf_protect
 
 @csrf_protect
@@ -20,15 +20,19 @@ def home(request):
     sort = request.POST.get("sort")
     if sort == "ASC":
       products = Product.objects.all().order_by('Price')
-    else:
+    elif sort == "DESC":
       products = Product.objects.all().order_by('-Price')
+    else:
+      products = Product.objects.all().order_by('-Rating')
   else:
     products = Product.objects.all()  
     
-  user = Customer.objects.filter(userName="kris")
-  cart = CartItem.objects.filter(user_id = user[0].id)
+  cart = CartItem.objects.filter(user = get_user(request).username)
   
-  return render(request, 'products.html', context={'products' : products, 'cart': cart})
+  if cart:
+    return render(request, 'products.html', context={'products' : products, 'cart': cart})
+  else:
+    return render(request, 'products.html', context={'products' : products, 'cart': "Empty"})
 
 def product(request, id):
   """
@@ -42,8 +46,7 @@ def product(request, id):
       render: Response for the incoming request along with the product data.
   """
   product = Product.objects.filter(id = id)[0]
-  user = Customer.objects.filter(userName="kris")
-  cart = CartItem.objects.filter(user_id = user[0].id).filter(product_id=id)
+  cart = CartItem.objects.filter(user = get_user(request).username).filter(product_id=id)
   if cart:
     return render(request, 'product.html', context={'product' : product, 'cart': cart[0]})
   else:
@@ -65,8 +68,7 @@ def search(request):
     products = Product.objects.all()
   else:
     products = Product.objects.filter(Name__icontains=key)
-  user = Customer.objects.filter(userName="kris")
-  cart = CartItem.objects.filter(user_id = user[0].id)
+  cart = CartItem.objects.filter(user = get_user(request).username)
   if cart:
     return render(request, 'search.html', context={'products' : products, 'cart' : cart})
   else:
