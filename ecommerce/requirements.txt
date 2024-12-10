@@ -1,0 +1,12 @@
+asgiref
+Django
+pip
+sqlparse
+tzdata
+python-dotenv
+PyJWT
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+psycopg2-binary
+python-dotenv
