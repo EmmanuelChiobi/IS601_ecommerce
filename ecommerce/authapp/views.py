@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm as ucf
 from django.contrib import messages
 
 # RESTful imports
@@ -57,6 +58,14 @@ def login_user(request):
             return redirect('login')
     else:
         return render(request, 'authenticate/login.html', {})
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("You have successfully logged out."))
+    return redirect('../products')
+
+def register_user(request):
+    return render(request, 'authenticate/register.html', {})
 
 """
 def register_user(request):

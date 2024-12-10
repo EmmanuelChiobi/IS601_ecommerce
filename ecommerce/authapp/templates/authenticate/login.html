@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% include "navbar.html/" %}
+{% include "templates/authenticate/navbar.html/" %}
 
 {% load static %}
 {% block content %}
@@ -12,6 +12,7 @@
   </div>
   {% endfor %}
 {% endif %}
+
 <h1 style="color: white;">Login</h1>
 <form action="" method="POST">
 {% csrf_token %}
@@ -25,5 +26,7 @@
   </div>
   <input type="submit" value="Submit" class="btn btn-primary"></input>
 </form>
+<p>Don't have an account?</p>
+<button type="button" class="btn btn-primary"><a href="{% url 'register' %}">Register</a></button>
 
 {% endblock %}
