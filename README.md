@@ -30,5 +30,5 @@ IS601_ecommerce/ecommerce
 ```bash
 python manage.py runserver
 ```
-- Right click on the localhost port number shown in the CMD to access build on your default browser.
+- Hold CTRL and click on the localhost port number shown in the CMD to access build on your default browser.
 
