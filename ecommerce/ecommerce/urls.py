@@ -21,8 +21,8 @@ from ecommerce import views as e_v
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', e_v.index),
-    path('products/', include('products.urls')),
+    path('products/', include('products.urls'), name="home"),
     path('cart/', include('cart.urls')),
-    # path('login/', include('django.contrib.auth.urls')),
+    path('authapp/', include('django.contrib.auth.urls')),
     path('authapp/', include('authapp.urls')),
 ]
