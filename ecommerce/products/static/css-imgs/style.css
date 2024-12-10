@@ -13,16 +13,19 @@ body{
 }
 
 .filter{
-  width: 100%;
+  width: 40%;
   height: auto;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 40px;
   font-size: x-large;
   background-color: white;
-  padding: 20px;
-  background-color: rgb(0 0 0 / 0.5);
-  color: #fff;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 1%;
+  border-radius: 20px;
+  border: solid 2px black;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #dropdownMenuButton{
@@ -260,7 +263,6 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin-left: 10px;
   margin-right: 25px;
   padding-top: 23px;
   position: relative;
