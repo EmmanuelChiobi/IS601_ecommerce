@@ -24,8 +24,7 @@
         {% if user.is_authenticated %}
           <li><a href={% url 'logout' %}>LOGOUT</a></li>
         {% else %}
-          <li><a href="{% url 'login' %}">LOGIN</a></li>
-          <li><a href="{% url 'register' %}">REGISTER</a></li>
+          <li><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>
         {% endif %}
         <li><a class="btn btn-outline-secondary" href="/cart"><img src="{% static 'css-imgs/cart_icon.png' %}" class="cart-icon"><b>({{ item_count }})</b></a></li>
         
