@@ -18,6 +18,9 @@ from .serializers import UserSerializer, CustomTokenPairSerializer
 from .forms import UserRegistrationForm
 
 # Create your views here.
+
+products_dir = '../products'
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -25,7 +28,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('../products/')
+            return redirect(products_dir)
         else:
             messages.success(request, ("There was an error logging in. Try again"))
             return redirect('login')
@@ -35,7 +38,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, ("You have successfully logged out."))
-    return redirect('../products')
+    return redirect(products_dir)
 
 def register_user(request):
     if request.method == "POST":
@@ -46,6 +49,9 @@ def register_user(request):
             password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)
             login(request, user)
+            return redirect(products_dir)
     else:
         form = UserCreationForm()
     return render(request, 'authenticate/register.html', {'form': form})
+
+# Gbuwce!26564
