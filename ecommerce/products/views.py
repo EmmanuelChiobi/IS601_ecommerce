@@ -30,7 +30,7 @@ def home(request):
   
   return render(request, 'products.html', context={'products' : products, 'cart': cart})
 
-def product(request, pid):
+def product(request, id):
   """
   View for the product site.
 
@@ -41,10 +41,14 @@ def product(request, pid):
   Returns:
       render: Response for the incoming request along with the product data.
   """
-  product = Product.objects.filter(PID = pid)
-  return render(request, 'product.html', context={'product' : product})
+  product = Product.objects.filter(id = id)[0]
+  user = Customer.objects.filter(userName="kris")
+  cart = CartItem.objects.filter(user_id = user[0].id).filter(product_id=id)
+  if cart:
+    return render(request, 'product.html', context={'product' : product, 'cart': cart[0]})
+  else:
+    return render(request, 'product.html', context={'product' : product, 'cart': 'Empty'})
 
-@csrf_protect
 def search(request):
   """
   View for the search page.
@@ -56,7 +60,16 @@ def search(request):
       render: Response for the incoming request along with the products macthing the search criteria.
   """
   
-  key = request.POST["key"]
-  product = Product.objects.filter(Name__icontains=key)
-  return render(request, 'product.html', context={'product' : product})
+  key = request.GET["key"]
+  if len(key) == 0:
+    products = Product.objects.all()
+  else:
+    products = Product.objects.filter(Name__icontains=key)
+  user = Customer.objects.filter(userName="kris")
+  cart = CartItem.objects.filter(user_id = user[0].id)
+  if cart:
+    return render(request, 'search.html', context={'products' : products, 'cart' : cart})
+  else:
+    return render(request, 'search.html', context={'products' : products, 'cart': 'Empty'})
+  
   

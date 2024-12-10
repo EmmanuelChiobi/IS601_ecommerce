@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content%}
+{% include "navbar.html" %} 
+<html>
+    <body>
+        <div class="container">
+            <div class="card shadow-sm" id="specific-product">
+                {% for product in products %}
+                    <img src="{% static product.Image %}" class="img-thumbnail"/>
+                    <div class="card-body" id="specific-card-body" >
+                        <p class="card-text"><font style="vertical-align: inherit;">{{product.Name}}</font></p>
+                        <p class="card-text"><font style="vertical-align: inherit;">{{product.Price}}</font></p>
+                        <p class="card-text"><font style="vertical-align: inherit;">{{product.Model}}</font></p>
+                        <p class="card-text"><font style="vertical-align: inherit;">{{product.Category}}</font></p>
+                        <p class="card-text"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{product.Specifications | linebreaksbr}}</font></p>
+                        <form method="GET" action="/cart/add/{{product.id}}">
+                            <div class="add-to-cart" >
+                                <input id="cart_{{product.id}}" type="submit" value="Add to cart" style="background-color: rgb(194, 216, 242); margin-bottom: 17px; padding: 15px; border-radius: 20px;">
+                            </div>
+                        </form>
+                        {% for y in cart %}
+                                    {% if y.product.Name == product.Name %}
+                                    <script>document.getElementById("cart_"+{{x.id}}).style.display="none"</script>
+                                    <div style="display:flex" id="quantity">
+                                        <a href="/cart/delete/{{product.id}}" class="btn btn-danger" id="minus">-</a>
+                                        <button class="btn btn-light" id="current" >{{y.quantity}}</button>
+                                        <a href="/cart/add/{{product.id}}" class="btn btn-success" id="plus">+</a>
+                                    </div>
+                                    {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}
