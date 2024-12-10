@@ -18,6 +18,7 @@
                         <input type="hidden" id="sort" name="sort">
                         <button class="dropdown-item" onclick="document.getElementById('sort').value = 'ASC'" type="submit">Price Low to High</button>
                         <button class="dropdown-item" onclick="document.getElementById('sort').value = 'DESC'" type="submit">Price High to Low</button>
+                        <button class="dropdown-item" onclick="document.getElementById('sort').value = 'RAT'" type="submit">Rating</button>
                     </form>
                 </div>
         </div>
@@ -33,6 +34,7 @@
                                 <div class="card-body" >
                                     <p class="card-text"><font style="vertical-align: inherit;"><b>{{x.Name}}</b></font></p>
                                     <p class="card-text"><font style="vertical-align: inherit;">${{x.Price}}</font></p>
+                                    <p class="card-text"><font style="vertical-align: inherit;">Rating: {{x.Rating}}/5</font></p>
                                 </div>
                             </a>
                             <form method="GET" action="/cart/add/{{x.id}}">
