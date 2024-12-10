@@ -8,15 +8,16 @@
   <p><strong>ERROR:</strong> There was an error with your form...</p>
 {% endif %}
 
-<h1 style="color: white;">Register</h1>
-<form action="{% url 'register' %}" method="POST">
+<div class="register-form">
+<h1 id="register-head">Register</h1>
+<form action="{% url 'register' %}" method="POST" id="registeration-form">
   {% csrf_token %}
   {{ form.as_p }}
-  <br/>
-  <input type="submit" value="Submit" class="btn btn-primary"></input>
+  <br>
+  <input type="submit" value="Register" class="btn btn-primary" id="register-btn"></input>
 </form>
-<br/>
-<p>Already have an account?</p>
-<button type="button" class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
-
+<br>
+<p id="login-p">Already have an account?</p>
+<button type="button" class="btn btn-primary" id="login-option"><a href="{% url 'login' %}">Login</a></button>
+</div>
 {% endblock %}
