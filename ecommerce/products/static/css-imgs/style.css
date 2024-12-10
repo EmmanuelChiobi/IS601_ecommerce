@@ -1,0 +1,310 @@
+
+body{
+    background-image: url(base_bg.jpg);
+    background-size: 50%;
+    background-repeat: repeat;
+
+    
+}
+
+.container-fluid{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.filter{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-size: x-large;
+  background-color: white;
+  padding: 20px;
+  background-color: rgb(0 0 0 / 0.5);
+  color: #fff;
+}
+
+#dropdownMenuButton{
+  margin-left: 50px;
+}
+
+
+.img-thumbnail{
+  width:600px;
+  height:350px;
+  border-radius: 10px;
+  border: solid 2px black;
+}
+
+#specific-product{
+  align-items: center;
+  width: 90%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: 5%;
+  background-color: rgba(249, 246, 246, 0.788);
+  color: #fff;
+  border-radius: 50px;
+  
+}
+
+.add-to-cart{
+	background-color: whitesmoke; 
+  text-align: center; 
+  border-bottom-left-radius: 15px; 
+  border-bottom-right-radius: 15px;
+}
+
+
+#specific-card-body{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+.cart-cards{
+  background-color: whitesmoke;
+  border-bottom:solid 10px black;
+  border-left: solid 5px black;
+  border-right: solid 5px black;
+  border-top: solid 5px black;
+  padding:10px;
+  display: flex;
+}
+
+#cart-container{
+  background-color: white;
+  padding: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  width: 76%;
+  border-radius: 10px;
+  border: double 15px rgb(65, 65, 67);
+  text-align: center;
+
+}
+
+#cart-item-img{
+  margin-right:15%;
+  margin-left: 10%;
+  height:200px;
+  width: 280px;
+  border-radius: 80px;
+   
+}
+
+#cart-item{
+  width: 40%;
+  height: 100%;
+}
+
+#cart-minus{
+  height: 40%;
+  width: 5%;
+  margin-top: 5%;
+  margin-right: 2px;
+  border: solid 2px black;
+}
+
+#cart-quantity{
+  height: 40%;
+  width: 5%;
+  margin-top: 5%;
+  border: solid 2px black;
+}
+
+#cart-plus{
+  height: 40%;
+  width: 5%;
+  margin-top: 5%;
+  margin-left: 2px;
+  border: solid 2px black;
+}
+
+#cart-card-text{
+  color: #000;
+  font-size: xx-large;
+  margin-left: 10%;
+  width:30%;
+}
+
+#cart-total{
+  margin-top: 15px;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  text-align: right;
+  padding-right: 5%;
+}
+
+
+.card-shadow-sm{
+  border: solid 5px black;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+#quantity{
+ padding-left: 20%;
+ padding-right: 20%;
+ padding-bottom: 5%;
+ background-color: whitesmoke;
+ border-bottom-left-radius: 20px;
+ border-bottom-right-radius: 20px;
+}
+
+#minus{
+  width: 33%;
+  border: solid 2px black;
+  margin:2px
+}
+
+#current{
+  width: 34%;
+  border: solid 2px black;
+  margin: 2px;
+}
+
+#plus{
+  width:33%;
+  border: solid 2px black;
+  margin: 2px;
+}
+
+.col-sm-4{
+  padding: 0;
+}
+
+.card-body{
+  background-color: whitesmoke;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: solid 5px black
+}
+
+.card-text{
+  color: #000;
+  font-size: larger;
+
+}
+
+.nav-container {
+    background-color: whitesmoke;
+	  width: 90%;
+    height: 100%;
+    padding-right: 30px;
+    border-radius: 20px;
+    margin-top: 1%;
+    border: solid 3px black 
+}
+
+.search-icon{
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+}
+
+.search-btn{
+  border: none;
+  margin-top: 1%;
+}
+
+header {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+#logo-a{
+    margin:0;
+}
+
+.logo-img {
+    
+    margin-left: 4%;
+    height: 30%;
+    width: 15%;
+    scale: 150%;
+
+}
+
+.cart-icon{
+    height:50px;
+    width: 50px;
+}
+
+nav {
+  float: right;
+  width: 80%;
+}
+
+nav ul {
+  margin-right: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding-top: 23px;
+  position: relative;
+}
+
+.form-control-lg{
+    margin-right: 10px;
+}
+
+#search-bar{
+    width: auto;
+    margin: 0;
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 20%;
+    padding: 0;
+
+  }
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+  
+
