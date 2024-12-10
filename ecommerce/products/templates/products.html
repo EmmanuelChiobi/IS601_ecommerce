@@ -28,7 +28,7 @@
                 {% for x in products %}
                     <div class="col-sm-4">
                         <div class="card-shadow-sm">
-                            <a href="product/{{x.PID}}">
+                            <a href="product/{{x.id}}">
                                 <img src="{% static x.Image %}" class="img-thumbnail"/>
                                 <div class="card-body" >
                                     <p class="card-text"><font style="vertical-align: inherit;"><b>{{x.Name}}</b></font></p>
@@ -48,8 +48,6 @@
                                     <button class="btn btn-light" id="current" >{{y.quantity}}</button>
                                     <a href="/cart/add/{{x.id}}" class="btn btn-success" id="plus">+</a>
                                 </div>
-                                {% else %}
-                                
                                 {% endif %}
                             {% endfor %}
                         </div>
