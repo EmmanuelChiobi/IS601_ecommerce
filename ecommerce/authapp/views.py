@@ -1,21 +1,8 @@
 # django imports
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
-# RESTful imports
-from rest_framework import generics, status
-from rest_framework.views import APIView
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
-
-# miscellaneous imports
-from .serializers import UserSerializer, CustomTokenPairSerializer
-from .forms import UserRegistrationForm
 
 # Create your views here.
 
@@ -53,5 +40,3 @@ def register_user(request):
     else:
         form = UserCreationForm()
     return render(request, 'authenticate/register.html', {'form': form})
-
-# Gbuwce!26564
