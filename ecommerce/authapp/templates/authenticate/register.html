@@ -12,6 +12,8 @@
   </div>
   {% endfor %}
 {% endif %}
+
+<div class="register-form">
 <h1 style="color: white;">Register</h1>
 <form action="" method="POST">
   {% csrf_token %}
@@ -21,5 +23,5 @@
 <br>
 <p>Have an account?</p>
 <button type="button" class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
-
+</div>
 {% endblock %}
