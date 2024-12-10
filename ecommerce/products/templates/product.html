@@ -7,14 +7,14 @@
     <body>
     <div class="container">
             {% for x in product %}
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm" id="specific-product">
                         <img src="{% static x.Image %}" class="img-thumbnail"/>
-                        <div class="card-body" >
-                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Name}}</font></font></p>
-                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Price}}</font></font></p>
-                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Model}}</font></font></p>
-                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{x.Category}}</font></font></p>
-                            <p class="card-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{x.Specifications | linebreaksbr}}</font></font></p>
+                        <div class="card-body" id="specific-card-body" >
+                            <p class="card-text"><font style="vertical-align: inherit; color: black;"><h4>{{x.Name}}</h4></font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;">$ {{x.Price}}</font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;">Model: {{x.Model}}</font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;">Category: {{x.Category}}</font></p>
+                            <p class="card-text"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{x.Specifications | linebreaksbr}}</font></p>
                         </div>
                 </div>
             {% endfor %}
