@@ -8,6 +8,7 @@ class Product(models.Model):
     Model = models.CharField(max_length=200)
     Category = models.CharField(max_length=200)
     Specifications = models.TextField(max_length=500)
+    Description = models.TextField(max_length=500)
     Price = models.FloatField()
     StockAmount = models.IntegerField()
     
