@@ -25,8 +25,12 @@
         {% if user.is_authenticated %}
           <li><a href={% url 'logout' %}><h6>LOGOUT</h6></a></li>
         {% else %}
+<<<<<<< HEAD
+          <li><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>
+=======
           <li><a href="{% url 'login' %}"><h6>LOGIN/REGISTER</h6></a></li>
 
+>>>>>>> 4fd6f19a08d50cda49df7a2ff3aa6db2d70ee725
         {% endif %}
         <li><a class="btn btn-outline-secondary" href="/cart"><img src="{% static 'css-imgs/cart_icon.png' %}" class="cart-icon"><b>({{ item_count }})</b></a></li>
         

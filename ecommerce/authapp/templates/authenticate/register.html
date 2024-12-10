@@ -4,22 +4,19 @@
 {% load static %}
 {% block content %}
 
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  {% endfor %}
+{% if form.errors %}
+  <p><strong>ERROR:</strong> There was an error with your form...</p>
 {% endif %}
-<h1 style="color: white;">Register</h1>
-<form action="" method="POST">
-  {% csrf_token %}
 
+<h1 style="color: white;">Register</h1>
+<form action="{% url 'register' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <br/>
   <input type="submit" value="Submit" class="btn btn-primary"></input>
 </form>
-<br>
-<p>Have an account?</p>
+<br/>
+<p>Already have an account?</p>
 <button type="button" class="btn btn-primary"><a href="{% url 'login' %}">Login</a></button>
 
 {% endblock %}
