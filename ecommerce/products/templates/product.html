@@ -14,7 +14,7 @@
                     <p class="card-text"><font style="vertical-align: inherit;">{{product.Model}}</font></p>
                     <p class="card-text"><font style="vertical-align: inherit;">{{product.Category}}</font></p>
                     <p class="card-text"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{product.Specifications | linebreaksbr}}</font></p>
-                    <p style="text-align: justify;" class="card-text"><font style="vertical-align: inherit;"><b>Specifications: </b></br>{{product.Description | linebreaksbr}}</font></p>
+                    <p style="text-align: justify;" class="card-text"><font style="vertical-align: inherit;"><b>Description: </b></br>{{product.Description | linebreaksbr}}</font></p>
                     {% if cart == 'Empty' %}
                         <form method="GET" action="/cart/add/{{product.id}}">
                             <div class="add-to-cart" >
