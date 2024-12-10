@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegistrationForm
 
@@ -19,3 +20,7 @@ def register_user(request):
         form = UserRegistrationForm()
 
     return render(request, 'auth/register.html', {'form': form})
+
+@login_required
+def shop_redirect(request):
+    return render(request, 'products.html')
