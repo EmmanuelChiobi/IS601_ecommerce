@@ -16,13 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import ecommerce.views as views
+from ecommerce import views as e_v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    # path('', e_v.index),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
-    path('login/', include('django.contrib.auth.urls')),
-    path('login/', include('authapp.urls')),
+    # path('login/', include('django.contrib.auth.urls')),
+    path('', include('authapp.urls')),
 ]
