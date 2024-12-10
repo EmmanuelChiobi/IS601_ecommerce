@@ -1,15 +1,25 @@
 {% load static %}
 <header>
-  <div class="nav-container">
-    <a href="#"><img src="{% static 'css-imgs/logo.png' %}" class="logo-img"></a>
+  <script>
+      document.addEventListener("DOMContentLoaded", function(event) { 
+          var scrollpos = localStorage.getItem('scrollpos');
+          if (scrollpos) window.scrollTo(0, scrollpos);
+      });
 
+      window.onbeforeunload = function(e) {
+          localStorage.setItem('scrollpos', window.scrollY);
+      };
+  </script>
+  <div class="nav-container">
+    <a href="/products"><img src="{% static 'css-imgs/logo.png' %}" class="logo-img"></a>
     <nav>
       <ul>
-        <li id="search-bar"><form class="form-inline my-2 my-lg-0" method="POST" action="/products/search">
-          {% csrf_token %}
-          <input class="form-control-lg" name="key" type="search" placeholder="Search" aria-label="Search">
-          <button type="submit" class="search-btn"><img src="{% static 'css-imgs/search-icon.png' %}" class="search-icon"></button>
-        </form></li>
+        <li id="search-bar">
+          <form class="form-inline my-2 my-lg-0" method="GET" action="/products/search">
+            <input class="form-control-lg" name="key" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark btn-lg" type="submit">Search</button>
+          </form>
+        </li>
         <li><a class="nav-link" href="/products"><h6>Home</h6><span class="sr-only">(current)</span></a></li>
         {% if user.is_authenticated %}
           <li><a href={% url 'logout' %}>LOGOUT</a></li>
