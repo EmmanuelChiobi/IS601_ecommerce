@@ -14,6 +14,10 @@ def thankyou(request):
     if cart:
       total_price = cart.aggregate(total=Sum(F('product__Price') * F('quantity')))['total']
       total_price = 0 if total_price == None else round(total_price)
+      for x in cart:
+        print(x.quantity)
+        Product.objects.filter(id = x.product.id).update(StockAmount = x.product.StockAmount - x.quantity)
+      cart.delete()
       return render(request,'thankyou.html', context={'cart' : cart, 'total_price': total_price})
   else:
     return redirect('/products')
