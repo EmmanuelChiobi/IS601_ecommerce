@@ -10,10 +10,13 @@ def cart(request, user="kris"):
     user = Customer.objects.filter(userName=user)
     userCart = CartItem.objects.filter(user_id=user[0].id)
     total_price = userCart.aggregate(total=Sum(F('product__Price') * F('quantity')))['total']
+    total_price = 0 if total_price == None else round(total_price)
     return render(request, 'cart.html', context = {"products": userCart, 'total_price': total_price })
 
 def cart_add(request, id, user="kris"):
-    referer = request.META.get('HTTP_REFERER', 'unknown').split('/')[-2]
+    url = request.META.get('HTTP_REFERER', 'unknown')
+    referer = url.split('/')[-2]
+    extension = url.split('/')[-1]
     user = Customer.objects.filter(userName=user)
     product = Product.objects.filter(id = id)
     userCart = CartItem.objects.filter(user_id=user[0].id) 
@@ -26,12 +29,21 @@ def cart_add(request, id, user="kris"):
         else:
             userCart.filter(product_id=product[0].id).update(quantity=F('quantity')+1)
     if referer == 'products':
-        return redirect('/products')
+        if(extension == ' '):
+            return redirect('/products')
+        else:
+            return redirect(url)
     elif referer == 'cart':
         return redirect('/cart')
+    elif referer == 'product':
+        return redirect(url)
+    
+    
 
 def cart_delete(request, id, user="kris"):
-    referer = request.META.get('HTTP_REFERER', 'unknown').split('/')[-2]
+    url = request.META.get('HTTP_REFERER', 'unknown')
+    referer = url.split('/')[-2]
+    extension = url.split('/')[-1]
     user = Customer.objects.filter(userName=user)
     product = Product.objects.filter(id = id)
     userCart = CartItem.objects.filter(user_id=user[0].id)
@@ -42,6 +54,11 @@ def cart_delete(request, id, user="kris"):
         CartItem.objects.filter(user_id = user[0].id).filter(product_id=product[0].id).update(quantity=F('quantity')-1)
         
     if referer == 'products':
-        return redirect('/products')
+        if(extension == ' '):
+            return redirect('/products')
+        else:
+            return redirect(url)
     elif referer == 'cart':
         return redirect('/cart')
+    elif referer == 'product':
+        return redirect(url)

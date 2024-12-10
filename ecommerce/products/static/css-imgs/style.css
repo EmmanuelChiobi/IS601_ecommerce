@@ -34,7 +34,7 @@ body{
   width:600px;
   height:350px;
   border-radius: 10px;
-  border: solid 2px black;
+  border: solid 5px black;
 }
 
 #specific-product{
@@ -141,7 +141,6 @@ body{
 
 
 .card-shadow-sm{
-  border: solid 5px black;
   border-radius: 20px;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -182,7 +181,7 @@ body{
   background-color: whitesmoke;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  border-top: solid 5px black
+  border-top: solid 5px black;
 }
 
 .card-text{
