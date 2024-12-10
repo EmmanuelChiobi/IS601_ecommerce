@@ -182,7 +182,8 @@ body{
   background-color: whitesmoke;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  border-top: solid 5px black
+  border-top: solid 5px black;
+  width: 60%;
 }
 
 .card-text{
