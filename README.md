@@ -5,7 +5,7 @@ Procedure to execute project:-
 
 - Download the project files
 - Copy all files into an empty folder if necessary
-- Open CMD and navigate to the folder
+- Open CMD and navigate to the folder/ecommerce .
 - Run command 'python manage.py runserver'
 - Open browser in the localhost port number shown in the CMD.
 
